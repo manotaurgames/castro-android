@@ -1,0 +1,2 @@
+include ':sample', ':simplecast'
+rootProject.name = 'parent'
