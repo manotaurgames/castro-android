@@ -22,5 +22,7 @@
     <string name="action_settings">Settings</string>
     <string name="message_to_cast">Message to Cast&#8230;</string>
     <string name="instructions">Talk to me</string>
+    <string name="title_activity_fragment">FragmentActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

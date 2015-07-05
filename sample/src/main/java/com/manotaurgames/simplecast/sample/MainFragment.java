@@ -1,11 +1,15 @@
 package com.manotaurgames.simplecast.sample;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -15,7 +19,7 @@ import com.google.android.gms.cast.CastDevice;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.manotaurgames.simplecast.CastActivity;
+import com.manotaurgames.simplecast.CastFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,21 +28,29 @@ import java.util.ArrayList;
  * Created by Aaron Sarazan on 7/4/15
  * Copyright(c) 2015 Level, Inc.
  */
-public class MainActivity extends CastActivity {
+public class MainFragment extends CastFragment {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainFragment.class.getSimpleName();
     private static final int REQUEST_CODE = 1;
 
     private HelloWorldChannel mHelloWorldChannel;
 
+
+
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        return inflater.inflate(R.layout.activity_main, container);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         // When the user clicks on the button, use Android voice recognition to
         // get text
-        Button voiceButton = (Button) findViewById(R.id.voiceButton);
+        Button voiceButton = (Button) view.findViewById(R.id.voiceButton);
         voiceButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,8 +77,8 @@ public class MainActivity extends CastActivity {
      * android.content.Intent)
      */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             ArrayList<String> matches = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             if (matches.size() > 0) {
@@ -98,7 +110,7 @@ public class MainActivity extends CastActivity {
                 Log.e(TAG, "Exception while sending message", e);
             }
         } else {
-            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
         }
     }
 
