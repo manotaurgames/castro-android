@@ -15,7 +15,7 @@ ext {
     gitUrl = 'https://github.com/manotaurgames/castro-android.git'
     issueUrl = 'https://github.com/manotaurgames/castro-android/issues'
 
-    libraryVersion = '1.0'
+    libraryVersion = '0.1'
 
     developerId = 'manotaurgames'
     developerName = 'Aaron Sarazan'
