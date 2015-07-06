@@ -5,20 +5,14 @@ A minimal API for Google Cast with utility Activity and Fragment classes. This l
 ## Code
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="..." >
-
+<manifest ...>
     <application ...>
-
         <!-- Provide the id given to your app in the developer console -->
         <meta-data
             android:name="SimpleCastId"
             android:value="@string/app_id" />
-
             ...
-
     </application>
-
 </manifest>
 ```
 
