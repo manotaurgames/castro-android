@@ -16,7 +16,7 @@
 -->
 <resources>
 
-    <string name="app_name">SimpleCast Demo</string>
+    <string name="app_name">Castro Demo</string>
     <string name="app_id">794B7BBF</string>
     <string name="namespace">urn:x-cast:com.google.cast.sample.helloworld</string>
     <string name="action_settings">Settings</string>

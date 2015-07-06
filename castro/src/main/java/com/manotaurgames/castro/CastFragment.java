@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package com.manotaurgames.simplecast;
+package com.manotaurgames.castro;
 
+import android.app.Activity;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.manotaurgames.simplecast.CastLogic.CastLogicCallbacks;
+import com.manotaurgames.castro.CastLogic.CastLogicCallbacks;
 
 /**
  * Subclass this Activity to get easy access to Google Cast API's in your UI
@@ -32,18 +33,18 @@ import com.manotaurgames.simplecast.CastLogic.CastLogicCallbacks;
  *
  * If you need more specialized behavior, consider using {@link CastLogic} directly.
  */
-public abstract class CastActivity extends AppCompatActivity implements CastLogicCallbacks {
+public abstract class CastFragment extends Fragment implements CastLogicCallbacks {
 
-    private static final String TAG = CastActivity.class.getSimpleName();
+    private static final String TAG = CastFragment.class.getSimpleName();
 
     private final Integer mCastAppIdRes;
 
     private CastLogic mCastLogic;
 
     /**
-     * The default constructor will use the 'SimpleCastId' metadata field from AndroidManifest
+     * The default constructor will use the 'GoogleCastId' metadata field from AndroidManifest
      */
-    public CastActivity() {
+    public CastFragment() {
         this(null);
     }
 
@@ -51,7 +52,7 @@ public abstract class CastActivity extends AppCompatActivity implements CastLogi
      * Subclasses can also pass a custom cast app id in the constructor.
      * @param castAppId the resource id for our Cast app id.
      */
-    protected CastActivity(Integer castAppId) {
+    protected CastFragment(Integer castAppId) {
         mCastAppIdRes = castAppId;
     }
 
@@ -59,24 +60,26 @@ public abstract class CastActivity extends AppCompatActivity implements CastLogi
         if (mCastAppIdRes != null) {
             return getString(mCastAppIdRes);
         }
+        Activity a = getActivity();
         try {
-            ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            return (String) ai.metaData.get("SimpleCastId");
+            ApplicationInfo ai = a.getPackageManager().getApplicationInfo(a.getPackageName(), PackageManager.GET_META_DATA);
+            return (String) ai.metaData.get("GoogleCastId");
         } catch (NameNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mCastLogic = new CastLogic(this, getCastAppId(), this);
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCastLogic = new CastLogic(activity, getCastAppId(), this);
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDetach() {
         mCastLogic.onDestroy();
+        mCastLogic = null;
+        super.onDetach();
     }
 
     @Override
@@ -92,11 +95,10 @@ public abstract class CastActivity extends AppCompatActivity implements CastLogi
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main, menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main, menu);
         mCastLogic.onCreateOptionsMenu(menu);
-        return true;
     }
 
     public final GoogleApiClient getCastApiClient() {

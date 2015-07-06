@@ -1,4 +1,4 @@
-package com.manotaurgames.simplecast;
+package com.manotaurgames.castro;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

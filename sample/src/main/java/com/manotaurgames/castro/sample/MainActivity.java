@@ -1,4 +1,4 @@
-package com.manotaurgames.simplecast.sample;
+package com.manotaurgames.castro.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.google.android.gms.cast.CastDevice;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.manotaurgames.simplecast.CastActivity;
+import com.manotaurgames.castro.CastActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;

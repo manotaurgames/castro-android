@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.manotaurgames.simplecast.sample" >
+    package="com.manotaurgames.castro.sample" >
 
     <application
         android:allowBackup="true"
@@ -9,12 +9,12 @@
         android:theme="@style/AppTheme" >
 
         <meta-data
-            android:name="SimpleCastId"
+            android:name="GoogleCastId"
             android:value="@string/app_id" />
 
         <activity
             android:name=".MainActivity"
-            android:label="SimpleCast Activity"
+            android:label="Castro Activity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:name=".FragmentActivity"
-            android:label="SimpleCast Fragment" >
+            android:label="Castro Fragment" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

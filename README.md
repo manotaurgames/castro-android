@@ -1,4 +1,4 @@
-# SimpleCast
+# Castro
 
 A minimal API for Google Cast with utility Activity and Fragment classes. This library handles Menu setup, Connect/Reconnect, and Disconnect.
 
@@ -12,7 +12,7 @@ A minimal API for Google Cast with utility Activity and Fragment classes. This l
 
         <!-- Provide the id given to your app in the developer console -->
         <meta-data
-            android:name="SimpleCastId"
+            android:name="GoogleCastId"
             android:value="@string/app_id" />
 
             ...
@@ -56,7 +56,7 @@ public class SampleFragment extends CastFragment {
 
 ### Install
 ```gradle
-compile 'com.manotaurgames.simplecast:simplecast-android:0.1'
+compile 'com.manotaurgames.Castro:Castro-android:0.1'
 ```
 
 ### Acknowledgements
