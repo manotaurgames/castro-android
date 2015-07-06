@@ -1,2 +1,2 @@
-include ':sample', ':castro'
+include ':sample', ':castro-android'
 rootProject.name = 'parent'
