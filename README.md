@@ -49,7 +49,7 @@ public class SampleFragment extends CastFragment {
 
 ## Install
 ```gradle
-compile 'com.manotaurgames.Castro:Castro-android:0.1'
+compile 'com.manotaurgames.castro:castro-android:0.1'
 ```
 
 ## Acknowledgements
