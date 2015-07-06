@@ -2,7 +2,7 @@
 
 A minimal API for Google Cast with utility Activity and Fragment classes. This library handles Menu setup, Connect/Reconnect, and Disconnect.
 
-### AndroidManifest
+## Code
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,7 +22,6 @@ A minimal API for Google Cast with utility Activity and Fragment classes. This l
 </manifest>
 ```
 
-### Code
 ```java
 // Can use an activity...
 public class SampleActivity extends CastActivity {
@@ -54,10 +53,10 @@ public class SampleFragment extends CastFragment {
 }
 ```
 
-### Install
+## Install
 ```gradle
 compile 'com.manotaurgames.simplecast:simplecast-android:0.1'
 ```
 
-### Acknowledgements
+## Acknowledgements
 The original code for this library was unceremoniously lifted from Google's [Sample Code](https://github.com/googlecast/CastHelloText-android). I just wanted to get rid of all the awkward status handlers and callback hell.
