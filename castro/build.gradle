@@ -49,6 +49,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:22.2.0"
     compile "com.google.android.gms:play-services-cast:7.5.0"
+    testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
 }
 
 apply from: 'https://raw.githubusercontent.com/levelmoney/JCenter/master/installv1.gradle'
