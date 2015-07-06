@@ -9,7 +9,7 @@ ext {
     libraryName = 'castro'
     artifact = 'castro-android'
 
-    libraryDescription = 'A minimal API for Google Cast.'
+    libraryDescription = 'A thoroughly minimal toolset for Google Cast on Android.'
 
     siteUrl = 'https://github.com/manotaurgames/castro-android'
     gitUrl = 'https://github.com/manotaurgames/castro-android.git'
